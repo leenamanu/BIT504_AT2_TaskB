@@ -1,3 +1,5 @@
+package BIT504_Assign2_PartAStudent;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;

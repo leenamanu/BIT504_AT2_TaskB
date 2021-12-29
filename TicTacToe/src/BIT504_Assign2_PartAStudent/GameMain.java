@@ -4,6 +4,7 @@ import javax.swing.*;
 
 
 
+@SuppressWarnings("serial")
 public class GameMain extends JPanel implements MouseListener{
 	//Constants for game 
 	// number of ROWS by COLS cell constants 
@@ -71,7 +72,7 @@ public class GameMain extends JPanel implements MouseListener{
 				JFrame frame = new JFrame(TITLE);
 				
 				//TODO: create the new GameMain panel and add it to the frame
-			
+						
 				
 				
 				//TODO: set the default close operation of the frame to exit_on_close

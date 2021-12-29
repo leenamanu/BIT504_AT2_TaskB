@@ -1,3 +1,5 @@
+package BIT504_Assign2_PartAStudent;
+
 import java.awt.*;
 
 public class Board {
@@ -31,7 +33,7 @@ public class Board {
 		// Hint: Return false if it is not a draw, return true if there are no empty positions left
 		   
 		
-
+		return false;
 		
 	}
 	
