@@ -1,6 +1,9 @@
+package BIT504_Assign2_PartAStudent;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 
 
 
@@ -41,7 +44,7 @@ public class GameMain extends JPanel implements MouseListener{
 	public GameMain() {   
 		
 		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
-	    
+		addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
 		statusBar = new JLabel("         ");       
@@ -59,9 +62,9 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
 
-		
+		board=new Board();
 		//TODO: call the method to initialise the game board
-
+        initGame();
 	}
 	
 	public static void main(String[] args) {
@@ -69,18 +72,22 @@ public class GameMain extends JPanel implements MouseListener{
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 	         public void run() {
 				//create a main window to contain the panel
-				JFrame frame = new JFrame(TITLE);
+	        	 JFrame frame = new JFrame(TITLE);
 				
 				//TODO: create the new GameMain panel and add it to the frame
 						
+				frame.add(new GameMain());
 				
 				
 				//TODO: set the default close operation of the frame to exit_on_close
-		            
+				
+				
 				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
+			    frame.setResizable(false);
+				frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 	         }
 		 });
 	}
@@ -98,12 +105,12 @@ public class GameMain extends JPanel implements MouseListener{
 			if (currentPlayer == Player.Cross) {   
 			
 				//TODO: use the status bar to display the message "X"'s Turn
-
+					statusBar.setText("X's Turn");
 				
 			} else {    
 				
 				//TODO: use the status bar to display the message "O"'s Turn
-
+				statusBar.setText("O's Turn");
 				
 			}       
 			} else if (currentState == GameState.Draw) {          
@@ -185,7 +192,8 @@ public class GameMain extends JPanel implements MouseListener{
 			initGame();            
 		}   
 		
-		//TODO: redraw the graphics on the UI          
+		//TODO: redraw the graphics on the UI    
+		paintComponent(getGraphics());
            
 	}
 		
