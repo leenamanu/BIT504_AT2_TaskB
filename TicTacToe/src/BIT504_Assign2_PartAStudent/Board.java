@@ -2,6 +2,7 @@ package BIT504_Assign2_PartAStudent;
 
 import java.awt.*;
 
+
 public class Board {
 	// grid line width
 	public static final int GRID_WIDTH = 8;
@@ -31,33 +32,44 @@ public class Board {
 		// TODO: Check whether the game has ended in a draw. 
 		// Hint: Use a nested loop (see the constructor for an example). Check whether any of the cells content in the board grid are Player.Empty. If they are, it is not a draw.
 		// Hint: Return false if it is not a draw, return true if there are no empty positions left
-		   
-		
-		return false;
+		 int check=0;
+		for (int row = 0; row < GameMain.ROWS; ++row) {
+			for (int col = 0; col < GameMain.COLS; ++col) {
+				if(cells[row][col].content==Player.Empty) 
+				    check++;
+				
+			}
+		}
+		if(check==0)
+			return true;
+		else
+			return false;
 		
 	}
 	
 	/** Return true if the current player "thePlayer" has won after making their move  */
 	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
-		 // check if player has 3-in-that-row
-		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer )
+				 // check if player has 3-in-that-row
+		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer ) {
 			return true; 
-		
-		 // TODO: Check if the player has 3 in the playerCol.
-		 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
-		
-		
-		
-		 // 3-in-the-diagonal
-		if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer)
+			
+		}
+		// TODO: Check if the player has 3 in the playerCol.
+				 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
+		else if(cells[0][playerCol].content==thePlayer && cells[1][playerCol].content==thePlayer && cells[2][playerCol].content==thePlayer){
 			return true;
-		 
-		
+			
+		} 
+				 // 3-in-the-diagonal
+		else if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer) {
+			return true;
+		}
 		// TODO: Check the diagonal in the other direction
-		
-
-		
-		//no winner, keep playing
+		else if( cells[0][2].content == thePlayer && cells[1][1].content == thePlayer && cells[2][0].content == thePlayer) {
+			return true;
+		}
+		else
+			//no winner, keep playing
 		return false;
 	}
 	
