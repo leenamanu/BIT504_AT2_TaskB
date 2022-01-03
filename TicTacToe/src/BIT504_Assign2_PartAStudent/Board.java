@@ -15,7 +15,7 @@ public class Board {
 	/** Constructor to create the game board */
 	public Board() {
 		
-	 //TODO: initialise the cells array using ROWS and COLS constants 
+	 //constructor create the cells using object array of Cell class 
 
 		cells=new Cell[GameMain.ROWS][GameMain.COLS];
 		for (int row = 0; row < GameMain.ROWS; ++row) {
@@ -29,9 +29,9 @@ public class Board {
 	 /** Return true if it is a draw (i.e., no more EMPTY cells) */ 
 	public boolean isDraw() {
 		 
-		// TODO: Check whether the game has ended in a draw. 
-		// Hint: Use a nested loop (see the constructor for an example). Check whether any of the cells content in the board grid are Player.Empty. If they are, it is not a draw.
-		// Hint: Return false if it is not a draw, return true if there are no empty positions left
+		/* nested for loop is used to check if any cells are  not empty, the game is drawn if no cells are empty, this method is called
+		 * only if hasWon() method return false, int variable check is used to check if any cell is empty
+		 */
 		 int check=0;
 		for (int row = 0; row < GameMain.ROWS; ++row) {
 			for (int col = 0; col < GameMain.COLS; ++col) {
@@ -40,7 +40,7 @@ public class Board {
 				
 			}
 		}
-		if(check==0)
+		if(check==0)  //if no cell is empty it is a draw
 			return true;
 		else
 			return false;
@@ -54,8 +54,7 @@ public class Board {
 			return true; 
 			
 		}
-		// TODO: Check if the player has 3 in the playerCol.
-				 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
+		// below condition is used to check if player has 3-in-that-col
 		else if(cells[0][playerCol].content==thePlayer && cells[1][playerCol].content==thePlayer && cells[2][playerCol].content==thePlayer){
 			return true;
 			
@@ -64,7 +63,7 @@ public class Board {
 		else if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer) {
 			return true;
 		}
-		// TODO: Check the diagonal in the other direction
+		// below condition is used to check if player has 3-in-the diagonal in opposite direction 
 		else if( cells[0][2].content == thePlayer && cells[1][1].content == thePlayer && cells[2][0].content == thePlayer) {
 			return true;
 		}
